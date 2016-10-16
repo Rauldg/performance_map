@@ -1,6 +1,13 @@
 rock_library(performance_map
     SOURCES Controller.cpp
-    HEADERS Controller.hpp)
+            Model.cpp
+    HEADERS Controller.hpp
+            Model.hpp
+            ConfigSet.hpp
+            TaskConfig.hpp
+    DEPS_PKGCONFIG
+            configmaps)
+
 
 rock_executable(performance_map_bin Main.cpp
     DEPS performance_map)

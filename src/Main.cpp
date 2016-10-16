@@ -1,10 +1,9 @@
 #include <iostream>
-#include <performance_map/Dummy.hpp>
+#include <performance_map/Controller.hpp>
 
 int main(int argc, char** argv)
 {
-    performance_map::DummyClass dummyClass;
-    dummyClass.welcome();
+    //performance_map::Controller controller;
 
     return 0;
 }

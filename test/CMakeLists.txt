@@ -1,3 +1,8 @@
 rock_testsuite(test_suite suite.cpp
-   test_Dummy.cpp
+   test_Controller.cpp
+   test_Model.cpp
    DEPS performance_map)
+
+add_subdirectory(maps_tests)
+
+file(COPY maps_tests DESTINATION ./)
