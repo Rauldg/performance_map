@@ -13,7 +13,8 @@ namespace performance_map
             ConfigSet(int id ){this->id = id;};
             ConfigSet(configmaps::ConfigMap map);
             int get_id( ){return this->id;};
-
+            bool get_task(const std::string & task_name, TaskConfig & task_config);
+            
             int id;
             std::vector<TaskConfig> set;
 

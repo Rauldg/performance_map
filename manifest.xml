@@ -8,6 +8,8 @@
   <logo>http://</logo>
   <depend package="base/cmake" />
   <depend package="tools/configmaps" />
+  <depend package="tools/graph_analysis" />
+  <depend package="tools/lib_config" />
   <!--
    To add any dependencies use the depend tag
   <depend package="dummy-dependency-0" />

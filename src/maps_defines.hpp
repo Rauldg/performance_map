@@ -2,6 +2,5 @@
 #define SAMPLES_PATH "/all_samples/"
 // Configmaps keys:
 #define PERFORMANCE "performance"
-#define BPM "bpm"
+#define BPM "bmp"
 #define ID "id"
-#define OVERPASSED "overpassed"

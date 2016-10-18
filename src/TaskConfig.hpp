@@ -4,10 +4,12 @@
 #include <string>
 #include <vector>
 
+#include <configmaps/ConfigData.h>
+
 namespace performance_map
 {
     template<typename type>
-    struct param_value
+    struct ParamValue
     {
         std::string param_name;
         type value;
@@ -17,12 +19,19 @@ namespace performance_map
     {
         public:
 
-        std::string task_name;
+            TaskConfig(){};
+            TaskConfig(const std::string & name, 
+                    const configmaps::ConfigMap & config_vals);
 
-        std::vector < param_value < int > > ints;
-        std::vector < param_value < double > > doubles;
-        std::vector < param_value < bool > >  bools;
-        std::vector < param_value < std::string > >  strings;
+            std::string get_name(){ return this->name;};
+            std::string get_param_type(const std::string &param_name);
+            bool matches(const std::string &name, configmaps::ConfigMap map);
+
+            std::string name;
+            std::vector < ParamValue < int > > ints;
+            std::vector < ParamValue < double > > doubles;
+            std::vector < ParamValue < bool > >  bools;
+            std::vector < ParamValue < std::string > >  strings;
 
     };
 
