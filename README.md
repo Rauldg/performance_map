@@ -53,3 +53,10 @@ STRUCTURE
 	easily embedded include the external software directly here
 -- doc/
 	should contain the existing doxygen file: doxygen.conf
+
+
+Some Functionalities
+--------------------
+
+Return the config id for the most performing task:
+int Controller::get_best_config();

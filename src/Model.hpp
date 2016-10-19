@@ -15,14 +15,13 @@ namespace performance_map
             std::string path;
 
             void set_path(const std::string & path) { this->path = path;};
+            int get_best_config_id();
             ConfigSet get_best_config();
             /*
              * NOTE This method accesses the persistent data
              */
             std::tuple<int, double> get_max_performance();
             ConfigSet get_configSet(int id);
-        private:
-            int get_max_performance_id();
     };
 
 } // end namespace performance_map

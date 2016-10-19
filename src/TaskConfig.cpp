@@ -4,6 +4,8 @@
 
 #include <base-logging/Logging.hpp>
 #include <lib_config/YAMLConfiguration.hpp>
+#include <graph_analysis/BaseGraph.hpp>
+#include <system_modelling/io/OrogenModelReader.hpp>
 
 using namespace performance_map;
 using namespace configmaps;
@@ -20,12 +22,28 @@ std::string TaskConfig::get_param_type(const std::string & param_name){
     return result;
 }
 
+std::string get_type(const std::string &task, const std::string &param){
+    graph_analysis::BaseGraph::Ptr graph = graph_analysis::BaseGraph::getInstance();
+    system_modelling::io::OrogenModelReader reader;
+    return "";
+}
+
 bool TaskConfig::matches(const std::string &name, configmaps::ConfigMap map){
     LOG_DEBUG_S << "MATCHES:  " << this->name << " and  " << name;
     bool ok = (this->name==name);
-    LOG_DEBUG_S << "OK:  " << ok ;
+    //LOG_DEBUG_S << "OK:  " << ok ;
     //if (ok)
     //{
+    //    // Go through the map, for each key find the correspondent param_value
+    //    // in the TaskConfig and make sure they are the same
+    //    ConfigMap::FIFOMap::iterator it;
+    //    it = map.begin();
+    //    // Loop over the parameter-value pairs
+    //    while(ok and it!=map.end()){
+    //        std::string param_name = it->first;
+    //        std::string type = get_type(name, param_name);
+    //        ok = check_exists_equal(param_name, type, it->second);
+    //    }
     //}
     return ok;
 }

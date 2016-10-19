@@ -9,11 +9,11 @@ namespace performance_map
     class Controller
     {
         public:
-            std::string path;
-            Model library;
-
+            std::string path = "";
+            Model *library = NULL;
+            
             void set_path(const std::string & path) { this->path = path;};
-            ConfigSet get_best_config();
+            int get_best_config_id();
     };
 
 } // end namespace performance_map

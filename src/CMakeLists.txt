@@ -12,6 +12,7 @@ rock_library(performance_map
     DEPS_PKGCONFIG
             configmaps
             graph_analysis
+            system_modelling
             base-lib
             lib_config
             )

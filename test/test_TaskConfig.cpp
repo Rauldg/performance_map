@@ -21,6 +21,7 @@ BOOST_AUTO_TEST_CASE(constructors_TaskConfig){
         LOG_DEBUG_S << "key:  " << it->first;
     }
 }
+
 BOOST_AUTO_TEST_CASE(match_TaskConfig_map){
     const std::string path="./maps_tests";
     ConfigMap map = ConfigMap::fromYamlFile(path + SAMPLES_PATH + "1.yml");

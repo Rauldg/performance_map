@@ -4,6 +4,15 @@
 using namespace std;
 using namespace performance_map;
 
-//ConfigSet Controller::get_best_config(){
-//
-//}
+int Controller::get_best_config_id(){
+    if (library == NULL){
+        if (path != "")
+        {
+            library = new Model();
+            library->set_path(path);
+        }
+        else
+            std::cerr << "No BPM library path available";
+    }
+    return library->get_best_config_id();
+}

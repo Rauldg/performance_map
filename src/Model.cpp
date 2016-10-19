@@ -11,12 +11,12 @@ using namespace configmaps;
 
 
 ConfigSet Model::get_best_config(){
-    int id = get_max_performance_id();
+    int id = get_best_config_id();
     ConfigSet result(id);
     return result;
 }
 
-int Model::get_max_performance_id(){
+int Model::get_best_config_id(){
     std::tuple<int, double> max_tuple = get_max_performance();
     return std::get<0>(max_tuple);
 }
