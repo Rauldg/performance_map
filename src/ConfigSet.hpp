@@ -10,9 +10,13 @@ namespace performance_map
     {
         public:
             ConfigSet( int id ){this->id = id;};
+            
+            int get_id(){return id;};
 
             int id;
-            std::vector<TaskConfig> set;
+            std::vector<std::string> paths;
+
+            //TODO Remove the class TaskConfig
 
     };
 

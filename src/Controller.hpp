@@ -10,7 +10,7 @@ namespace performance_map
     {
         public:
             std::string path;
-            Model library;
+            Model library();
 
             void set_path(const std::string & path) { this->path = path;};
             ConfigSet get_best_config();
