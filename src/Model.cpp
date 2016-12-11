@@ -5,6 +5,7 @@
 // Would be much nicer to do it the system_modelling way and not use the config maps
 
 #include <yaml-cpp/yaml.h>
+#include <fstream>
 
 using namespace std;
 using namespace performance_map;
@@ -47,28 +48,15 @@ std::vector<std::string> Model::get_config_paths(int id)
             // Key corresponds to a task. Improve the yml so that the tasks are stored as a list in its own dictionary entry
             std::cout << "Task Name " << it->first.as<std::string>() << std::endl;
             tasks.push_back(it->first.as<std::string>());
-            all_configs[]
+            YAML::Node file_content;
+            file_content[TASK_LABEL] = key;
+            file_content[SECTION_LABEL][id] = all_configs[key];
+            std::string filename = path+SAMPLES_PATH+"/"+key+"_"+std::to_string(id)+".yml";
+            std::ofstream task_file (filename, std::ofstream::out);
+            task_file << file_content;
+            task_file.close();
+            result.push_back(filename);
         }
-
-    // Split in the different tasks, store and provide a vector with those
-    for (YAML::Node::const_iterator it=all_configs.begin(); it!=all_configs.end(); ++it){
-        YAML::Node map = *it;
-        if ((.as<std::string>() != ID_LABEL) and 
-                (map[0].as<std::string>() != OVERPASSED_LABEL))
-        {
-            std::cout << "Task Name " << it->first.as<std::string>() << std::endl;
-            YAML::Node map = *it;
-            if (map.IsMap())
-                std::cout << "Is a map" << std::endl;
-            YAML::Emitter output; 
-            output << map;
-            std::cout << "To store in filename " << output.c_str() << std::endl;
-            
-        }
-        //if (map.IsMap())
-        //{
-        //std::cout << "Task Name " << it->first.as<std::string>() << std::endl;
-        //}
     }
     return result;
 }

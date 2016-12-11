@@ -8,6 +8,8 @@
 #define PERFORMANCE_LABEL std::string("performance")
 #define ID_LABEL std::string("id")
 #define OVERPASSED_LABEL std::string("overpassed")
+#define TASK_LABEL std::string("Task")
+#define SECTION_LABEL std::string("Sections")
 #define IDS_PERFORMANCES_FILE std::string("/bpms/ids_performance_vector.yml")
 #define MAPS_DEFAULT_FOLDER std::string("./maps")
 
