@@ -35,10 +35,9 @@ YAML::Node Model::get_max_performance_and_id(){
     return resul;
 }
 
-std::vector<std::string> Model::get_config_paths(int id)
+void Model::reshape_config_file(int id)
 {
     YAML::Node all_configs = YAML::LoadFile(path + SAMPLES_PATH + "/" + std::to_string(id) + ".yml" );
-    std::vector<std::string> result;
     std::vector<std::string> tasks;
     for (YAML::const_iterator it=all_configs.begin(); it!=all_configs.end(); ++it){
         // find out the name of the tasks
@@ -46,7 +45,6 @@ std::vector<std::string> Model::get_config_paths(int id)
         if ((key != ID_LABEL) and (key != OVERPASSED_LABEL))
         {
             // Key corresponds to a task. Improve the yml so that the tasks are stored as a list in its own dictionary entry
-            std::cout << "Task Name " << it->first.as<std::string>() << std::endl;
             tasks.push_back(it->first.as<std::string>());
             YAML::Node file_content;
             file_content[TASK_LABEL] = key;
@@ -55,6 +53,20 @@ std::vector<std::string> Model::get_config_paths(int id)
             std::ofstream task_file (filename, std::ofstream::out);
             task_file << file_content;
             task_file.close();
+        }
+    }
+}
+
+std::vector<std::string> Model::get_config_paths(int id)
+{
+    reshape_config_file(id);
+    YAML::Node all_configs = YAML::LoadFile(path + SAMPLES_PATH + "/" + std::to_string(id) + ".yml" );
+    std::vector<std::string> result;
+    for (YAML::const_iterator it=all_configs.begin(); it!=all_configs.end(); ++it){
+        std::string key = it->first.as<std::string>();
+        if ((key != ID_LABEL) and (key != OVERPASSED_LABEL))
+        {
+            std::string filename = path+SAMPLES_PATH+"/"+key+"_"+std::to_string(id)+".yml";
             result.push_back(filename);
         }
     }

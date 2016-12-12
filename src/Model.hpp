@@ -21,6 +21,7 @@ namespace performance_map
     {
         private:
             YAML::Node get_max_performance_and_id();
+            void reshape_config_file(int id);
 
         public:
             std::string path;
@@ -30,6 +31,7 @@ namespace performance_map
             ConfigSet get_best_config();
             double get_max_performance();
             std::vector<std::string> get_config_paths(int id);
+
 
     };
 
