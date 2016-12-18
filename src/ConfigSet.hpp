@@ -12,6 +12,7 @@ namespace performance_map
             ConfigSet( int id ){this->id = id;};
             
             int get_id(){return id;};
+            std::vector<std::string> get_paths(){return paths;};
 
             int id;
             std::vector<std::string> paths;

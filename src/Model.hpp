@@ -2,7 +2,6 @@
 #define _PERFORMANCE_MAP_MODEL_HPP_
 
 #include "ConfigSet.hpp"
-#include "Model.hpp"
 #include <yaml-cpp/yaml.h>
 
 #define PERFORMANCE_LABEL std::string("performance")

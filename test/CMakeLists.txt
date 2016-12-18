@@ -13,5 +13,7 @@ rock_testsuite(test_suite suite.cpp
     )
 
 add_subdirectory(maps_tests)
+add_subdirectory(cnd_models)
 
 file(COPY maps_tests DESTINATION ./)
+file(COPY cnd_models DESTINATION ./)

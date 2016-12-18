@@ -3,17 +3,22 @@
 
 #include "ConfigSet.hpp"
 #include "Model.hpp"
+#include <graph_analysis/BaseGraph.hpp>
 
 namespace performance_map
 {
     class Controller
     {
         public:
-            std::string path;
-            Model library();
+
 
             void set_path(const std::string & path) { this->path = path;};
             ConfigSet get_best_config();
+            void load_best_config_set(const graph_analysis::BaseGraph::Ptr graph);
+
+        private:
+            std::string path;
+            Model mLibrary;
     };
 
 } // end namespace performance_map

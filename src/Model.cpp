@@ -1,7 +1,7 @@
-#include "Controller.cpp"
 #include <iostream>
 #include <base-logging/Logging.hpp>
 
+#include "Model.hpp"
 // Would be much nicer to do it the system_modelling way and not use the config maps
 
 #include <yaml-cpp/yaml.h>

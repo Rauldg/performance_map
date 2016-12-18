@@ -1,0 +1,346 @@
+tasks:
+    #  internal_simulator:
+    #    type: "internal_simulator::Task"
+    #    config_names:
+    #      - default
+    #    state: RUNNING
+    #    activity:
+    #      type: NONE
+    #      realtime: false
+  mars:
+    type: "mars::Task"
+    config_names: ["default","asguard_in_dlr_scene"]
+    state: RUNNING
+  mars_actuators:
+    type: mars::Joints
+    config_names:
+      - base
+    state: RUNNING
+    activity:
+      type: NONE
+      realtime: false
+  sysmon:
+    type: mars::Joints
+    config_names:
+      - sysmon
+    state: RUNNING
+    activity:
+      type: NONE
+      realtime: false
+  joint_dispatcher:
+    type: joint_dispatcher::Task
+    config_names:
+      - default
+      - asguard
+    state: RUNNING
+    activity:
+      type: NONE
+      realtime: false
+  simple_controller:
+    type: skid4_control::SimpleController
+    config_names:
+      - default
+    state: RUNNING
+    activity:
+      type: NONE
+      realtime: false
+  xsens:
+    type: mars::IMU
+    config_names:
+      - default
+    state: RUNNING
+    activity:
+      type: NONE
+      realtime: false
+  odometry:
+    type: odometry::Skid
+    config_names:
+      - asguard
+    config:
+      static_transformations:
+        - sourceFrame: asguard_body
+          orientation:
+            re: -0.707107
+            im:
+              - 0
+              - 0
+              - 0.707107
+          position:
+            data:
+              - 0
+              - 0
+              - 0
+          targetFrame: imu
+    state: RUNNING
+    activity:
+      type: NONE
+      realtime: false
+  velodyne:
+    type: mars::RotatingLaserRangeFinder
+    config_names:
+      - default
+    state: RUNNING
+    activity:
+      type: NONE
+      realtime: false
+  trajectory_follower:
+    type: trajectory_follower::Task
+    config_names:
+      - default
+    state: RUNNING
+    activity:
+      type: NONE
+      realtime: false
+  nav_planner:
+    type: motion_planning_libraries::Task
+    config_names:
+      - default
+    state: RUNNING
+    activity:
+      type: NONE
+      realtime: false
+  traversability:
+    type: traversability::Simple
+    config_names:
+      - default
+    state: RUNNING
+    activity:
+      type: NONE
+      realtime: false
+  slam:
+    type: graph_slam::VelodyneSLAM
+    config_names:
+      - default
+      - velodyne
+      - asguard
+    config:
+      static_transformations:
+        - position:
+            data:
+              - -0
+              - -0
+              - -0.328158
+          sourceFrame: velodyne
+          orientation:
+            re: -0.707107
+            im:
+              - -0
+              - -0
+              - 0.707107
+          targetFrame: asguard_body
+    state: RUNNING
+    activity:
+      type: NONE
+      realtime: false
+
+deployments:
+    #1: 
+    #    deployer: orogen
+    #    process_name: internal_simulator
+    #    hostID: localhorst
+    #    taskList:
+    #        internal_simulator : internal_simulator
+  2:
+    deployer: orogen
+    process_name: simulation_asguard
+    hostID: localhost
+    taskList:
+      joint_dispatcher: joint_dispatcher
+      mars: mars
+      mars_actuators: mars_actuators
+      simple_controller: simple_controller
+      sysmon: sysmon
+      velodyne: velodyne
+      xsens: xsens
+  3:
+    deployer: orogen
+    process_name: asguard_navigation
+    hostID: localhost
+    taskList:
+      trajectory_follower: trajectory_follower
+      odometry: odometry
+  4:
+    deployer: orogen
+    process_name: nav_planner
+    hostID: localhost
+    taskList:
+      nav_planner: nav_planner
+      slam: slam
+      traversability: traversability
+      waypoints: waypoints
+
+connections:
+  10:
+    from:
+      task_id: odometry
+      port_name: odometry_samples
+    to:
+      task_id: trajectory_follower
+      port_name: robot_pose
+    transport: CORBA
+    type: BUFFER
+    size: 100
+  11:
+    from:
+      task_id: odometry
+      port_name: odometry_samples
+    to:
+      task_id: nav_planner
+      port_name: start_pose_samples
+    transport: CORBA
+    type: BUFFER
+    size: 100
+  12:
+    from:
+      task_id: traversability
+      port_name: traversability_map
+    to:
+      task_id: nav_planner
+      port_name: traversability_map
+    transport: CORBA
+    type: BUFFER
+    size: 100
+  13:
+    from:
+      task_id: nav_planner
+      port_name: trajectory
+    to:
+      task_id: trajectory_follower
+      port_name: trajectory
+    transport: CORBA
+    type: BUFFER
+    size: 100
+  14:
+    from:
+      task_id: trajectory_follower
+      port_name: motion_command
+    to:
+      task_id: simple_controller
+      port_name: motion_command
+    transport: CORBA
+    type: BUFFER
+    size: 100
+  15:
+    from:
+      task_id: velodyne
+      port_name: laser_scans
+    to:
+      task_id: slam
+      port_name: lidar_samples
+    transport: CORBA
+    type: BUFFER
+    size: 100
+  16:
+    from:
+      task_id: odometry
+      port_name: odometry_samples
+    to:
+      task_id: slam
+      port_name: dynamic_transformations
+    transport: CORBA
+    type: BUFFER
+    size: 100
+  17:
+    from:
+      task_id: slam
+      port_name: envire_map
+    to:
+      task_id: traversability
+      port_name: mls_map
+    transport: CORBA
+    type: BUFFER
+    size: 100
+  3:
+    from:
+      task_id: joint_dispatcher
+      port_name: command_out
+    to:
+      task_id: mars_actuators
+      port_name: command
+    transport: CORBA
+    type: BUFFER
+    size: 100
+  4:
+    from:
+      task_id: mars_actuators
+      port_name: status_samples
+    to:
+      task_id: joint_dispatcher
+      port_name: status_samples_in
+    transport: CORBA
+    type: BUFFER
+    size: 100
+  5:
+    from:
+      task_id: sysmon
+      port_name: status_samples
+    to:
+      task_id: joint_dispatcher
+      port_name: body_joint_in
+    transport: CORBA
+    type: BUFFER
+    size: 100
+  6:
+    from:
+      task_id: simple_controller
+      port_name: command
+    to:
+      task_id: joint_dispatcher
+      port_name: command
+    transport: CORBA
+    type: BUFFER
+    size: 100
+  7:
+    from:
+      task_id: joint_dispatcher
+      port_name: status_samples
+    to:
+      task_id: simple_controller
+      port_name: status_samples
+    transport: CORBA
+    type: BUFFER
+    size: 100
+  8:
+    from:
+      task_id: joint_dispatcher
+      port_name: status_samples
+    to:
+      task_id: odometry
+      port_name: actuator_samples
+    transport: CORBA
+    type: BUFFER
+    size: 100
+  9:
+    from:
+      task_id: xsens
+      port_name: orientation_samples
+    to:
+      task_id: odometry
+      port_name: dynamic_transformations
+    transport: CORBA
+    type: BUFFER
+    size: 20
+  odometryodometry_samplesslamdynamic_transformations:
+    from:
+      task_id: odometry
+      port_name: odometry_samples
+    to:
+      task_id: slam
+      port_name: dynamic_transformations
+    transport: CORBA
+    type: BUFFER
+    size: 100
+  xsensorientation_samplesodometrydynamic_transformations:
+    from:
+      task_id: xsens
+      port_name: orientation_samples
+    to:
+      task_id: odometry
+      port_name: dynamic_transformations
+    transport: CORBA
+    type: BUFFER
+    size: 100
+#annotations:
+#  operationCalls:
+#    - taskID: slam
+#      operationName: generateMap
