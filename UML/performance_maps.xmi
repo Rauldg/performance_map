@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<XMI verified="false" xmi.version="1.2" timestamp="2016-12-10T16:23:13" xmlns:UML="http://schema.omg.org/spec/UML/1.3">
+<XMI verified="false" xmi.version="1.2" timestamp="2016-12-17T14:43:47" xmlns:UML="http://schema.omg.org/spec/UML/1.3">
  <XMI.header>
   <XMI.documentation>
    <XMI.exporter>umbrello uml modeller http://umbrello.kde.org</XMI.exporter>
@@ -39,6 +39,7 @@
       <UML:Package visibility="public" isSpecification="false" namespace="Logical View" isAbstract="false" isLeaf="false" isRoot="false" xmi.id="Zam8SmY7KwvS" name="std">
        <UML:Namespace.ownedElement>
         <UML:Class visibility="public" isSpecification="false" namespace="Zam8SmY7KwvS" isAbstract="false" isLeaf="false" isRoot="false" xmi.id="m44h93t26z8x" name="vector"/>
+        <UML:Dependency visibility="public" isSpecification="false" namespace="Logical View" supplier="Zam8SmY7KwvS" xmi.id="URqcWyIMlQYA" client="bRkF2YRL8DbH" name=""/>
         <UML:Dependency visibility="public" isSpecification="false" namespace="Logical View" supplier="Zam8SmY7KwvS" xmi.id="URqcWyIMlQYA" client="bRkF2YRL8DbH" name=""/>
        </UML:Namespace.ownedElement>
       </UML:Package>
@@ -102,59 +103,59 @@
           <UML:Attribute visibility="public" isSpecification="false" xmi.id="7dg0DJw1y3rL" type="wbtHyLdXAivs" name="strings"/>
          </UML:Classifier.feature>
         </UML:Class>
-        <UML:Class visibility="public" isSpecification="false" namespace="HyEYtnZy8aSN" isAbstract="false" isLeaf="false" isRoot="false" xmi.id="rtsdYW9pj1HI" name="Model">
-         <UML:Classifier.feature>
-          <UML:Attribute visibility="public" isSpecification="false" xmi.id="SmAi4lkCOQAZ" type="QPYb5vdlHva1" name="path"/>
-          <UML:Operation visibility="public" isSpecification="false" isQuery="false" isAbstract="false" isLeaf="false" isRoot="false" xmi.id="i6ae7RxKFQhf" name="set_path">
-           <UML:BehavioralFeature.parameter>
-            <UML:Parameter visibility="private" isSpecification="false" xmi.id="53c1yOVQ8f8C" type="kOsSP7kgUgDh" value="" name="path"/>
-           </UML:BehavioralFeature.parameter>
-          </UML:Operation>
-          <UML:Operation visibility="public" isSpecification="false" isQuery="false" isAbstract="false" isLeaf="false" isRoot="false" xmi.id="OqMkFUKxasZi" name="get_best_config">
-           <UML:BehavioralFeature.parameter>
-            <UML:Parameter kind="return" xmi.id="IW0VviA0jmzh" type="V7yNIo4xFs6Y"/>
-           </UML:BehavioralFeature.parameter>
-          </UML:Operation>
-          <UML:Operation visibility="public" isSpecification="false" isQuery="false" isAbstract="false" isLeaf="false" isRoot="false" xmi.id="8U6G8CRW1nHG" name="get_max_performance">
-           <UML:BehavioralFeature.parameter>
-            <UML:Parameter kind="return" xmi.id="IZDqPmWfGXAB" type="baueKNw6oJB7"/>
-           </UML:BehavioralFeature.parameter>
-          </UML:Operation>
-         </UML:Classifier.feature>
-        </UML:Class>
        </UML:Namespace.ownedElement>
       </UML:Package>
+      <UML:Class visibility="public" isSpecification="false" namespace="Logical View" isAbstract="false" isLeaf="false" isRoot="false" xmi.id="rtsdYW9pj1HI" name="Model">
+       <UML:Classifier.feature>
+        <UML:Attribute visibility="public" isSpecification="false" xmi.id="SmAi4lkCOQAZ" type="QPYb5vdlHva1" name="path"/>
+        <UML:Operation visibility="public" isSpecification="false" isQuery="false" isAbstract="false" isLeaf="false" isRoot="false" xmi.id="i6ae7RxKFQhf" name="set_path">
+         <UML:BehavioralFeature.parameter>
+          <UML:Parameter visibility="private" isSpecification="false" xmi.id="53c1yOVQ8f8C" type="kOsSP7kgUgDh" value="" name="path"/>
+         </UML:BehavioralFeature.parameter>
+        </UML:Operation>
+        <UML:Operation visibility="public" isSpecification="false" isQuery="false" isAbstract="false" isLeaf="false" isRoot="false" xmi.id="OqMkFUKxasZi" name="get_best_config">
+         <UML:BehavioralFeature.parameter>
+          <UML:Parameter kind="return" xmi.id="IW0VviA0jmzh" type="V7yNIo4xFs6Y"/>
+         </UML:BehavioralFeature.parameter>
+        </UML:Operation>
+        <UML:Operation visibility="public" isSpecification="false" isQuery="false" isAbstract="false" isLeaf="false" isRoot="false" xmi.id="8U6G8CRW1nHG" name="get_max_performance">
+         <UML:BehavioralFeature.parameter>
+          <UML:Parameter kind="return" xmi.id="IZDqPmWfGXAB" type="baueKNw6oJB7"/>
+         </UML:BehavioralFeature.parameter>
+        </UML:Operation>
+       </UML:Classifier.feature>
+      </UML:Class>
      </UML:Namespace.ownedElement>
      <XMI.extension xmi.extender="umbrello">
       <diagrams>
-       <diagram showopsig="1" linecolor="#ff0000" snapx="25" showattribassocs="1" snapy="25" linewidth="0" showattsig="1" textcolor="#000000" isopen="1" showpackage="1" showpubliconly="1" showstereotype="1" name="class diagram" font="Sans Serif,9,-1,0,50,0,0,0,0,0" canvasheight="883,0612244897959" canvaswidth="2433,775510204081" localid="-1" snapcsgrid="0" showgrid="0" showops="1" griddotcolor="#d3d3d3" backgroundcolor="#ffffff" usefillcolor="1" fillcolor="#ffff00" zoom="98" xmi.id="F2TkF405Lr3P" documentation="How do we make use here of that what has been done in D-Rock? &#xa;&#xa;Define what you want to do very clearly (use cases): &#xa;&#xa;- Manage a database of configs" showscope="1" snapgrid="0" showatts="1" type="1">
+       <diagram showopsig="1" linecolor="#ff0000" snapx="25" showattribassocs="1" snapy="25" linewidth="0" showattsig="1" textcolor="#000000" isopen="1" showpackage="1" showpubliconly="0" showstereotype="1" name="class diagram" font="Sans Serif,9,-1,0,50,0,0,0,0,0" canvasheight="612,7959213256836" canvaswidth="983,2449234943001" localid="-1" snapcsgrid="0" showgrid="0" showops="1" griddotcolor="#d3d3d3" backgroundcolor="#ffffff" usefillcolor="1" fillcolor="#ffff00" zoom="98" xmi.id="F2TkF405Lr3P" documentation="How do we make use here of that what has been done in D-Rock? &#xa;&#xa;Define what you want to do very clearly (use cases): &#xa;&#xa;- Manage a database of configs" showscope="1" snapgrid="0" showatts="1" type="1">
         <widgets>
-         <classwidget linecolor="none" usesdiagramfillcolor="0" linewidth="0" showoperations="1" textcolor="#000000" usesdiagramusefillcolor="0" showpubliconly="1" showpackage="1" x="-616,8571428571428" showattsigs="601" showstereotype="1" y="-404,5306122448979" showattributes="1" font="Sans Serif,9,-1,0,75,0,0,0,0,0" localid="DJBw59cCdgSl" width="231" isinstance="0" usefillcolor="1" fillcolor="#ffff00" xmi.id="rtsdYW9pj1HI" showscope="1" height="70" showopsigs="601"/>
-         <classwidget linecolor="none" usesdiagramfillcolor="0" linewidth="0" showoperations="1" textcolor="#000000" usesdiagramusefillcolor="0" showpubliconly="1" showpackage="1" x="-1114,775510204081" showattsigs="601" showstereotype="1" y="-397,9183673469387" showattributes="1" font="Sans Serif,9,-1,0,75,0,0,0,0,0" localid="qrGrfV5v4IjR" width="211" isinstance="0" usefillcolor="1" fillcolor="#ffff00" xmi.id="V7yNIo4xFs6Y" showscope="1" height="56" showopsigs="601"/>
+         <classwidget linecolor="none" usesdiagramfillcolor="0" linewidth="0" showoperations="1" textcolor="#000000" usesdiagramusefillcolor="0" showpubliconly="1" showpackage="1" x="-616,8571166992188" showattsigs="601" showstereotype="1" y="-404,5306091308594" showattributes="1" font="Sans Serif,9,-1,0,75,0,0,0,0,0" localid="DJBw59cCdgSl" width="231" isinstance="0" usefillcolor="1" fillcolor="#ffff00" xmi.id="rtsdYW9pj1HI" showscope="1" height="70" showopsigs="601"/>
+         <classwidget linecolor="none" usesdiagramfillcolor="0" linewidth="0" showoperations="1" textcolor="#000000" usesdiagramusefillcolor="0" showpubliconly="1" showpackage="1" x="-1114,775512695312" showattsigs="601" showstereotype="1" y="-397,9183654785156" showattributes="1" font="Sans Serif,9,-1,0,75,0,0,0,0,0" localid="qrGrfV5v4IjR" width="211" isinstance="0" usefillcolor="1" fillcolor="#ffff00" xmi.id="V7yNIo4xFs6Y" showscope="1" height="56" showopsigs="601"/>
          <classwidget linecolor="none" usesdiagramfillcolor="0" linewidth="0" showoperations="1" textcolor="#000000" usesdiagramusefillcolor="0" showpubliconly="1" showpackage="1" x="-608" showattsigs="601" showstereotype="1" y="-634" showattributes="1" font="Sans Serif,9,-1,0,75,0,0,0,0,0" localid="2G7JlFSyYesc" width="231" isinstance="0" usefillcolor="1" fillcolor="#ffff00" xmi.id="GDsUZI8hIr7A" showscope="1" height="84" showopsigs="601"/>
-         <classwidget linecolor="none" usesdiagramfillcolor="0" linewidth="0" showoperations="1" textcolor="#000000" usesdiagramusefillcolor="0" showpubliconly="1" showpackage="1" x="-463,7551020408163" showattsigs="601" showstereotype="1" y="-248,0204081632653" showattributes="1" font="Sans Serif,9,-1,0,75,0,0,0,0,0" localid="fsIDU9pFbdeg" width="247" isinstance="0" usefillcolor="1" fillcolor="#ffff00" xmi.id="WmorDYbo0zp8" showscope="1" height="68" showopsigs="601"/>
-         <classwidget linecolor="none" usesdiagramfillcolor="0" linewidth="0" showoperations="1" textcolor="#000000" usesdiagramusefillcolor="0" showpubliconly="1" showpackage="1" x="-1013,795918367347" showattsigs="601" showstereotype="1" y="-252,0816326530612" showattributes="1" font="Sans Serif,9,-1,0,75,0,0,0,0,0" localid="qkbw6LfxDJoK" width="347" isinstance="0" usefillcolor="1" fillcolor="#ffff00" xmi.id="bRkF2YRL8DbH" showscope="1" height="91" showopsigs="601"/>
-         <notewidget linecolor="none" usesdiagramfillcolor="0" linewidth="0" textcolor="#000000" usesdiagramusefillcolor="0" x="-1110,204081632653" showstereotype="1" y="-615,3061224489796" text="" font="Sans Serif,9,-1,0,50,0,0,0,0,0" localid="e8RGWrcBjtOE" width="60" isinstance="0" noteType="0" usefillcolor="1" fillcolor="#ffff00" xmi.id="2CTbn5HdnsXr" height="30"/>
-         <notewidget linecolor="none" usesdiagramfillcolor="0" linewidth="0" textcolor="#000000" usesdiagramusefillcolor="0" x="-935,7142857142857" showstereotype="1" y="-112,2448979591837" text="Task Config is already something that system modelling provides, we just need the paths to the files" font="Sans Serif,9,-1,0,50,0,0,0,0,0" localid="xwOhpktrwMTi" width="217" isinstance="0" noteType="0" usefillcolor="1" fillcolor="#ffff00" xmi.id="QkJBbr3n3pAX" height="91,0408163265306"/>
+         <classwidget linecolor="none" usesdiagramfillcolor="0" linewidth="0" showoperations="1" textcolor="#000000" usesdiagramusefillcolor="0" showpubliconly="1" showpackage="1" x="-463,7550964355469" showattsigs="601" showstereotype="1" y="-248,0204010009766" showattributes="1" font="Sans Serif,9,-1,0,75,0,0,0,0,0" localid="fsIDU9pFbdeg" width="247" isinstance="0" usefillcolor="1" fillcolor="#ffff00" xmi.id="WmorDYbo0zp8" showscope="1" height="68" showopsigs="601"/>
+         <classwidget linecolor="none" usesdiagramfillcolor="0" linewidth="0" showoperations="1" textcolor="#000000" usesdiagramusefillcolor="0" showpubliconly="1" showpackage="1" x="-1013,7958984375" showattsigs="601" showstereotype="1" y="-252,0816345214844" showattributes="1" font="Sans Serif,9,-1,0,75,0,0,0,0,0" localid="qkbw6LfxDJoK" width="347" isinstance="0" usefillcolor="1" fillcolor="#ffff00" xmi.id="bRkF2YRL8DbH" showscope="1" height="91" showopsigs="601"/>
+         <notewidget linecolor="none" usesdiagramfillcolor="0" linewidth="0" textcolor="#000000" usesdiagramusefillcolor="0" x="-1197,959203603316" showstereotype="1" y="-611,2245196906888" text="Remove all the TaskConfig class stuff. We can directly use the YAML nodes.&#xa;&#xa;First describe a test (use case) to see that you don't need them and then remove them&#xa;" font="Sans Serif,9,-1,0,50,0,0,0,0,0" localid="e8RGWrcBjtOE" width="211" isinstance="0" noteType="0" usefillcolor="1" fillcolor="#ffff00" xmi.id="2CTbn5HdnsXr" height="125"/>
+         <notewidget linecolor="none" usesdiagramfillcolor="0" linewidth="0" textcolor="#000000" usesdiagramusefillcolor="0" x="-935,7142944335938" showstereotype="1" y="-112,2448959350586" text="Task Config is already something that system modelling provides, we just need the paths to the files" font="Sans Serif,9,-1,0,50,0,0,0,0,0" localid="xwOhpktrwMTi" width="217" isinstance="0" noteType="0" usefillcolor="1" fillcolor="#ffff00" xmi.id="QkJBbr3n3pAX" height="91,04081726074219"/>
         </widgets>
         <messages/>
         <associations>
          <assocwidget linecolor="none" indexa="1" usesdiagramfillcolor="0" widgetbid="rtsdYW9pj1HI" indexb="1" linewidth="none" seqnum="" textcolor="none" usesdiagramusefillcolor="0" totalcounta="2" totalcountb="2" widgetaid="GDsUZI8hIr7A" font="Sans Serif,9,-1,0,50,0,0,0,0,0" visibilityA="0" visibilityB="0" usefillcolor="1" fillcolor="#ffff00" changeabilityA="900" xmi.id="JNxZE3hk1Vxv" changeabilityB="900" type="510">
           <linepath layout="Polyline">
-           <startpoint startx="-485,2244897959183" starty="-550"/>
-           <endpoint endx="-485,2244897959183" endy="-404,5306122448979"/>
+           <startpoint startx="-485,2244873046875" starty="-550"/>
+           <endpoint endx="-485,2244873046875" endy="-404,5306091308594"/>
           </linepath>
           <floatingtext linecolor="none" usesdiagramfillcolor="1" linewidth="none" textcolor="none" usesdiagramusefillcolor="1" x="-549" showstereotype="1" y="-427" text="library" font="Sans Serif,9,-1,0,50,0,0,0,0,0" localid="lSoO6E8v6Mml" pretext="+" role="710" width="57" isinstance="0" posttext="" usefillcolor="1" fillcolor="none" xmi.id="rset8NK9bPQM" height="18"/>
          </assocwidget>
          <assocwidget indexa="1" indexb="1" usesdiagramusefillcolor="0" widgetaid="bRkF2YRL8DbH" usesdiagramfillcolor="0" fillcolor="#ffff00" linecolor="none" seqnum="" totalcounta="2" xmi.id="qoZy19D9Y6yX" widgetbid="WmorDYbo0zp8" totalcountb="2" type="502" textcolor="none" usefillcolor="1" linewidth="none" font="Sans Serif,9,-1,0,50,0,0,0,0,0">
           <linepath layout="Polyline">
-           <startpoint startx="-666,7959183673469" starty="-204,5102040816327"/>
-           <endpoint endx="-463,7551020408163" endy="-204,5102040816327"/>
+           <startpoint startx="-666,7958984375" starty="-204,5102081298828"/>
+           <endpoint endx="-463,7550964355469" endy="-204,5102081298828"/>
           </linepath>
          </assocwidget>
         </associations>
        </diagram>
-       <diagram showopsig="1" linecolor="#ff0000" snapx="25" showattribassocs="1" snapy="25" linewidth="0" showattsig="1" textcolor="#000000" isopen="1" showpackage="1" showpubliconly="1" showstereotype="1" name="Add new Configuration Set" font="Sans Serif,9,-1,0,50,0,0,0,0,0" canvasheight="333" canvaswidth="763" localid="-1" snapcsgrid="0" showgrid="0" showops="1" griddotcolor="#d3d3d3" backgroundcolor="#ffffff" autoincrementsequence="0" usefillcolor="1" fillcolor="#ffff00" zoom="100" xmi.id="xZBBT08qmG23" documentation="" showscope="1" snapgrid="0" showatts="1" type="3">
+       <diagram showopsig="1" linecolor="#ff0000" snapx="25" showattribassocs="1" snapy="25" linewidth="0" showattsig="1" textcolor="#000000" isopen="1" showpackage="1" showpubliconly="0" showstereotype="1" name="Add new Configuration Set" font="Sans Serif,9,-1,0,50,0,0,0,0,0" canvasheight="354" canvaswidth="1066" localid="-1" snapcsgrid="0" showgrid="0" showops="1" griddotcolor="#d3d3d3" backgroundcolor="#ffffff" autoincrementsequence="0" usefillcolor="1" fillcolor="#ffff00" zoom="100" xmi.id="xZBBT08qmG23" documentation="" showscope="1" snapgrid="0" showatts="1" type="3">
         <widgets>
          <objectwidget linecolor="none" usesdiagramfillcolor="1" linewidth="0" textcolor="#000000" usesdiagramusefillcolor="1" x="-1058" decon="0" showstereotype="1" y="21" font="Sans Serif,9,-1,0,50,0,1,0,0,0" localid="qvrxfxuYit1D" width="48" isinstance="0" multipleinstance="0" usefillcolor="1" fillcolor="none" xmi.id="QSaLm33CmMOL" height="59" drawasactor="1"/>
          <objectwidget linecolor="none" usesdiagramfillcolor="1" linewidth="0" textcolor="#000000" usesdiagramusefillcolor="1" x="-780" decon="0" showstereotype="1" y="80" font="Sans Serif,9,-1,0,50,0,1,0,0,0" localid="cDCJ6CWDVBZY" width="81" isinstance="0" multipleinstance="0" usefillcolor="1" fillcolor="none" xmi.id="GDsUZI8hIr7A" height="24" drawasactor="0"/>
@@ -164,7 +165,7 @@
         </messages>
         <associations/>
        </diagram>
-       <diagram showopsig="1" linecolor="#ff0000" snapx="25" showattribassocs="1" snapy="25" linewidth="0" showattsig="1" textcolor="#000000" isopen="1" showpackage="1" showpubliconly="1" showstereotype="1" name="Retrieve Best ConfigSet" font="Sans Serif,9,-1,0,50,0,0,0,0,0" canvasheight="589" canvaswidth="796" localid="-1" snapcsgrid="0" showgrid="0" showops="1" griddotcolor="#d3d3d3" backgroundcolor="#ffffff" autoincrementsequence="0" usefillcolor="1" fillcolor="#ffff00" zoom="100" xmi.id="Jhzom88y0fbB" documentation="" showscope="1" snapgrid="0" showatts="1" type="3">
+       <diagram showopsig="1" linecolor="#ff0000" snapx="25" showattribassocs="1" snapy="25" linewidth="0" showattsig="1" textcolor="#000000" isopen="1" showpackage="1" showpubliconly="0" showstereotype="1" name="Retrieve Best ConfigSet" font="Sans Serif,9,-1,0,50,0,0,0,0,0" canvasheight="471" canvaswidth="779" localid="-1" snapcsgrid="0" showgrid="0" showops="1" griddotcolor="#d3d3d3" backgroundcolor="#ffffff" autoincrementsequence="0" usefillcolor="1" fillcolor="#ffff00" zoom="100" xmi.id="Jhzom88y0fbB" documentation="" showscope="1" snapgrid="0" showatts="1" type="3">
         <widgets>
          <objectwidget linecolor="none" usesdiagramfillcolor="1" linewidth="0" textcolor="#000000" usesdiagramusefillcolor="1" x="-411" decon="0" showstereotype="1" y="21" font="Sans Serif,9,-1,0,50,0,1,0,0,0" localid="P4sj9eimZ2DD" width="48" isinstance="0" multipleinstance="0" usefillcolor="1" fillcolor="none" xmi.id="QSaLm33CmMOL" height="59" drawasactor="1"/>
          <objectwidget linecolor="none" usesdiagramfillcolor="1" linewidth="0" textcolor="#000000" usesdiagramusefillcolor="1" x="-245" decon="0" showstereotype="1" y="80" font="Sans Serif,9,-1,0,50,0,1,0,0,0" localid="G3UVMWbdDYRx" width="81" isinstance="0" multipleinstance="0" usefillcolor="1" fillcolor="none" xmi.id="GDsUZI8hIr7A" height="24" drawasactor="0"/>
@@ -176,7 +177,7 @@
           <floatingtext linecolor="none" usesdiagramfillcolor="1" linewidth="none" textcolor="none" usesdiagramusefillcolor="1" x="-382" showstereotype="1" y="145" text="get_best_config() : ConfigSet" font="Sans Serif,9,-1,0,50,0,0,0,0,0" localid="Z2M7igl2gAui" pretext="" role="704" width="181" isinstance="0" posttext="" usefillcolor="1" fillcolor="none" xmi.id="nzyRXkPY72n0" height="18"/>
          </messagewidget>
          <messagewidget linecolor="none" usesdiagramfillcolor="1" widgetbid="gXueDVpaXiJg" textid="oFtZya4K4ZLh" operation="OqMkFUKxasZi" linewidth="none" seqnum="" textcolor="none" usesdiagramusefillcolor="1" x="-204" showstereotype="1" y="201" widgetaid="G3UVMWbdDYRx" font="Sans Serif,9,-1,0,50,0,0,0,0,0" localid="40Yb4lOenkjV" width="239" isinstance="0" usefillcolor="1" fillcolor="none" xmi.id="OqMkFUKxasZi" height="142" sequencemessagetype="1000">
-          <floatingtext linecolor="none" usesdiagramfillcolor="1" linewidth="none" textcolor="none" usesdiagramusefillcolor="1" x="-159" showstereotype="1" y="183" text="get_best_config() : ConfigSet" font="Sans Serif,9,-1,0,50,0,0,0,0,0" localid="RERWEEUGC3rF" pretext="" role="704" width="181" isinstance="0" posttext="" usefillcolor="1" fillcolor="none" xmi.id="oFtZya4K4ZLh" height="18"/>
+          <floatingtext linecolor="none" usesdiagramfillcolor="1" linewidth="none" textcolor="none" usesdiagramusefillcolor="1" x="-199" showstereotype="1" y="183" text="get_best_config() : performance_map::ConfigSet" font="Sans Serif,9,-1,0,50,0,0,0,0,0" localid="RERWEEUGC3rF" pretext="" role="704" width="299" isinstance="0" posttext="" usefillcolor="1" fillcolor="none" xmi.id="oFtZya4K4ZLh" height="18"/>
          </messagewidget>
         </messages>
         <associations/>
@@ -204,7 +205,7 @@
      </UML:Namespace.ownedElement>
      <XMI.extension xmi.extender="umbrello">
       <diagrams>
-       <diagram showopsig="1" linecolor="#ff0000" snapx="25" showattribassocs="1" snapy="25" linewidth="0" showattsig="1" textcolor="#000000" isopen="1" showpackage="1" showpubliconly="1" showstereotype="1" name="ConfigSets Management" font="Sans Serif,9,-1,0,50,0,0,0,0,0" canvasheight="388" canvaswidth="787" localid="-1" snapcsgrid="0" showgrid="0" showops="1" griddotcolor="#d3d3d3" backgroundcolor="#ffffff" usefillcolor="1" fillcolor="#ffff00" zoom="100" xmi.id="Qqd7wzKuviZj" documentation="" showscope="1" snapgrid="0" showatts="1" type="2">
+       <diagram showopsig="1" linecolor="#ff0000" snapx="25" showattribassocs="1" snapy="25" linewidth="0" showattsig="1" textcolor="#000000" isopen="1" showpackage="1" showpubliconly="0" showstereotype="1" name="ConfigSets Management" font="Sans Serif,9,-1,0,50,0,0,0,0,0" canvasheight="345" canvaswidth="505" localid="-1" snapcsgrid="0" showgrid="0" showops="1" griddotcolor="#d3d3d3" backgroundcolor="#ffffff" usefillcolor="1" fillcolor="#ffff00" zoom="100" xmi.id="Qqd7wzKuviZj" documentation="" showscope="1" snapgrid="0" showatts="1" type="2">
         <widgets>
          <actorwidget width="36" showstereotype="1" x="-377" usesdiagramusefillcolor="0" y="97" usesdiagramfillcolor="0" isinstance="0" localid="BP8FEGke4Nl1" fillcolor="#ffff00" height="59" linecolor="none" xmi.id="QSaLm33CmMOL" textcolor="#000000" usefillcolor="1" linewidth="0" font="Sans Serif,9,-1,0,50,0,0,0,0,0"/>
          <usecasewidget width="191" showstereotype="1" x="-201" usesdiagramusefillcolor="0" y="1" usesdiagramfillcolor="0" isinstance="0" localid="K3tDjSwAuXVg" fillcolor="#ffff00" height="49" linecolor="none" xmi.id="CCmNTah8h8MD" textcolor="#000000" usefillcolor="1" linewidth="0" font="Sans Serif,9,-1,0,50,0,0,0,0,0"/>
@@ -219,7 +220,7 @@
            <endpoint endx="-201" endy="50"/>
           </linepath>
          </assocwidget>
-         <assocwidget indexa="1" indexb="1" usesdiagramusefillcolor="16" widgetaid="QSaLm33CmMOL" usesdiagramfillcolor="0" fillcolor="#ffff00" linecolor="none" seqnum="" totalcounta="2" xmi.id="e0UksygsX4BK" widgetbid="0aOKpAjEQLAr" totalcountb="2" type="503" textcolor="none" usefillcolor="1" linewidth="none" font="Sans Serif,9,-1,0,50,0,0,0,0,0">
+         <assocwidget indexa="1" indexb="1" usesdiagramusefillcolor="1" widgetaid="QSaLm33CmMOL" usesdiagramfillcolor="0" fillcolor="#ffff00" linecolor="none" seqnum="" totalcounta="2" xmi.id="e0UksygsX4BK" widgetbid="0aOKpAjEQLAr" totalcountb="2" type="503" textcolor="none" usefillcolor="1" linewidth="none" font="Sans Serif,9,-1,0,50,0,0,0,0,0">
           <linepath layout="Polyline">
            <startpoint startx="-341" starty="156"/>
            <endpoint endx="-193" endy="166"/>
@@ -248,7 +249,7 @@
   </UML:Model>
  </XMI.content>
  <XMI.extensions xmi.extender="umbrello">
-  <docsettings viewid="F2TkF405Lr3P" uniqueid="7z6LSQKowPG2" documentation=""/>
+  <docsettings viewid="F2TkF405Lr3P" uniqueid="TeZ6xmrGvMnl" documentation=""/>
   <listview>
    <listitem open="1" type="800" id="Views">
     <listitem open="1" type="821" id="Component View">
@@ -262,7 +263,7 @@
     <listitem open="1" type="801" id="Logical View">
      <listitem open="0" type="810" id="xZBBT08qmG23" label="Add new Configuration Set"/>
      <listitem open="0" type="807" id="F2TkF405Lr3P" label="class diagram"/>
-     <listitem open="1" type="830" id="Datatypes">
+     <listitem open="0" type="830" id="Datatypes">
       <listitem open="1" type="829" id="mTN7IQWQnEUZ"/>
       <listitem open="1" type="829" id="JnE9Y4Il4kVI"/>
       <listitem open="0" type="829" id="kOsSP7kgUgDh"/>
@@ -298,6 +299,12 @@
        <listitem open="0" type="814" id="JNxZE3hk1Vxv"/>
        <listitem open="0" type="814" id="WyoCt92rKrtU"/>
        <listitem open="0" type="815" id="cxmwogQeXGH5"/>
+      </listitem>
+      <listitem open="0" type="813" id="rtsdYW9pj1HI">
+       <listitem open="0" type="815" id="OqMkFUKxasZi"/>
+       <listitem open="0" type="815" id="8U6G8CRW1nHG"/>
+       <listitem open="0" type="814" id="SmAi4lkCOQAZ"/>
+       <listitem open="0" type="815" id="i6ae7RxKFQhf"/>
       </listitem>
       <listitem open="0" type="813" id="WmorDYbo0zp8">
        <listitem open="0" type="814" id="IbnI9xndicVv"/>
