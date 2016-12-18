@@ -6,9 +6,10 @@ rock_library(performance_map
             ConfigSet.hpp
             TaskConfig.hpp
     DEPS_PKGCONFIG
-            configmaps
-            yaml-cpp
-            base-lib)
+            base-lib
+            system_modelling
+            graph_analysis
+            )
 
 
 rock_executable(performance_map_bin Main.cpp
