@@ -320,26 +320,28 @@ connections:
     transport: CORBA
     type: BUFFER
     size: 20
-  odometryodometry_samplesslamdynamic_transformations:
-    from:
-      task_id: odometry
-      port_name: odometry_samples
-    to:
-      task_id: slam
-      port_name: dynamic_transformations
-    transport: CORBA
-    type: BUFFER
-    size: 100
-  xsensorientation_samplesodometrydynamic_transformations:
-    from:
-      task_id: xsens
-      port_name: orientation_samples
-    to:
-      task_id: odometry
-      port_name: dynamic_transformations
-    transport: CORBA
-    type: BUFFER
-    size: 100
+# The following connections should also be established but loading them in the
+# graph fails.
+#  odometryodometry_samplesslamdynamic_transformations:
+#    from:
+#      task_id: odometry
+#      port_name: odometry_samples
+#    to:
+#      task_id: slam
+#      port_name: dynamic_transformations
+#    transport: CORBA
+#    type: BUFFER
+#    size: 100
+#  xsensorientation_samplesodometrydynamic_transformations:
+#    from:
+#      task_id: xsens
+#      port_name: orientation_samples
+#    to:
+#      task_id: odometry
+#      port_name: dynamic_transformations
+#    transport: CORBA
+#    type: BUFFER
+#    size: 100
 #annotations:
 #  operationCalls:
 #    - taskID: slam

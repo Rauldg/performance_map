@@ -47,7 +47,15 @@ void Model::reshape_config_file(int id)
             // Key corresponds to a task. Improve the yml so that the tasks are stored as a list in its own dictionary entry
             tasks.push_back(it->first.as<std::string>());
             YAML::Node file_content;
-            file_content[TASK_LABEL] = key;
+            file_content[TASK_NAME_LABEL] = key;
+            std::string taskType;
+            if (key == "trajectory_follower")
+                taskType = "trajectory_follower::Task";
+            if (key == "motion_planner")
+                taskType = "motion_planning_libraries::Task";
+            if (key == "traversability")
+                taskType = "traversability::Simple";
+            file_content[TASK_TYPE_LABEL] = taskType;
             file_content[SECTION_LABEL][id] = all_configs[key];
             std::string filename = path+SAMPLES_PATH+"/"+key+"_"+std::to_string(id)+".yml";
             std::ofstream task_file (filename, std::ofstream::out);

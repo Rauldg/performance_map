@@ -7,7 +7,8 @@
 #define PERFORMANCE_LABEL std::string("performance")
 #define ID_LABEL std::string("id")
 #define OVERPASSED_LABEL std::string("overpassed")
-#define TASK_LABEL std::string("Task")
+#define TASK_TYPE_LABEL std::string("Task")
+#define TASK_NAME_LABEL std::string("Task_name")
 #define SECTION_LABEL std::string("Sections")
 #define IDS_PERFORMANCES_FILE std::string("/bpms/ids_performance_vector.yml")
 #define MAPS_DEFAULT_FOLDER std::string("./maps")
@@ -20,6 +21,9 @@ namespace performance_map
     {
         private:
             YAML::Node get_max_performance_and_id();
+            // TODO This whole method should disappear by using correct config
+            // yml files and not compositions. Also task_name and task should
+            // be contained
             void reshape_config_file(int id);
 
         public:

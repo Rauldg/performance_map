@@ -1,6 +1,7 @@
 #include "Controller.hpp"
 #include <iostream>
 #include <system_modelling/io/ConfigReader.hpp>
+#include <system_modelling/io/CndModelWriter.hpp>
 
 using namespace std;
 using namespace performance_map;
@@ -10,14 +11,20 @@ ConfigSet Controller::get_best_config()
     return this->mLibrary.get_best_config();
 }
 
-void Controller::load_best_config_set(const graph_analysis::BaseGraph::Ptr graph)
+void Controller::load_best_config_set(graph_analysis::BaseGraph::Ptr graph)
 {
-    system_modelling::io::ConfigReader reader;
+    system_modelling::io::ConfigReader configReader;
     ConfigSet bestConfig = mLibrary.get_best_config();
-    std::vector<std::string> paths = bestConfig.get_paths();
-    std::cout << "FOO" << std::endl;
-    for (std::vector<std::string>::const_iterator taskIterator = paths.begin(); taskIterator != paths.end(); ++taskIterator)
+    std::vector<std::string> paths = bestConfig.get_paths(); 
+    std::vector<std::string> sections = {std::to_string(bestConfig.get_id())};
+    system_modelling::io::CndModelWriter writer;
+    writer.write("GraphContents.yml", graph);
+    //for (std::vector<std::string>::const_iterator taskIterator = paths.begin(); taskIterator != paths.end(); ++taskIterator)
+    for (auto taskIterator : paths)
     {
-        std::cout << "Config path: " << taskIterator->c_str() << std::endl;
+        std::string configPath = taskIterator;
+        std::cout << "[Controller::load_best_config_set]Config path: " << configPath << std::endl;
+        configReader.read(configPath, graph, sections); 
+        std::cout << "Config path: " << taskIterator << std::endl;
     }
 }
