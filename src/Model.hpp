@@ -31,6 +31,7 @@ namespace performance_map
 
             Model(const std::string & path=MAPS_DEFAULT_FOLDER){ this->path = path;};
             void set_path(const std::string & path) { this->path = path;};
+            std::string get_path(){return this->path;};
             ConfigSet get_best_config();
             double get_max_performance();
             std::vector<std::string> get_config_paths(int id);
