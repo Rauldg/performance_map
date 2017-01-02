@@ -1,8 +1,8 @@
 #ifndef _PERFORMANCE_MAP_CONFIG_SET_HPP_
 #define _PERFORMANCE_MAP_CONFIG_SET_HPP_
 
-#include "TaskConfig.hpp"
 #include <vector>
+#include <string>
 
 namespace performance_map
 {
@@ -12,12 +12,13 @@ namespace performance_map
             ConfigSet( int id ){this->id = id;};
             
             int get_id(){return id;};
-            std::vector<std::string> get_paths(){return paths;};
+            std::vector<std::string> get_paths(){return paths;}
+            double getPerformance(){return performance;}
 
             int id;
             std::vector<std::string> paths;
+            double performance;
 
-            //TODO Remove the class TaskConfig
 
     };
 

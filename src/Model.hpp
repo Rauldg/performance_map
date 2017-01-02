@@ -26,15 +26,25 @@ namespace performance_map
             // be contained
             void reshape_config_file(int id);
 
+            int mNumConfigSets;
+
         public:
             std::string path;
 
+            int getNumConfigSets(){return mNumConfigSets;};
+            void setNumConfigSets(int num){mNumConfigSets = num;};
+
+            
+            // TODO In the constructor, count the number of configSets
             Model(const std::string & path=MAPS_DEFAULT_FOLDER){ this->path = path;};
+            // TODO When setting the path, update the number of configSets
             void set_path(const std::string & path) { this->path = path;};
             std::string get_path(){return this->path;};
             ConfigSet get_best_config();
             double get_max_performance();
             std::vector<std::string> get_config_paths(int id);
+            void storeConfigSet(const ConfigSet& configSet);
+
 
 
     };

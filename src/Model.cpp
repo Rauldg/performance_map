@@ -7,6 +7,8 @@
 #include <yaml-cpp/yaml.h>
 #include <fstream>
 
+#include <boost/filesystem.hpp>
+
 using namespace std;
 using namespace performance_map;
 
@@ -104,4 +106,8 @@ double Model::get_max_performance(){
     return best[PERFORMANCE_LABEL].as<double>();
 }
 
-
+void Model::storeConfigSet(const ConfigSet& configSet)
+{
+    
+    mNumConfigSets++;
+}

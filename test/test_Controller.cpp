@@ -31,20 +31,14 @@ BOOST_AUTO_TEST_CASE(test_load_best_config)
     graph_analysis::BaseGraph::Ptr graph(graph_analysis::BaseGraph::getInstance());
     system_modelling::utils::load_orogen_templates(search_paths, graph);
     system_modelling::io::CndModelReader reader;
-    //std::string CNDFilePath = "./cnd_models/01_start_is.yml";
-    std::string CNDFilePath = "./cnd_models/motion_planning.yml";
-    reader.read(CNDFilePath, graph);
-    int id_best = controller.load_best_config_set(graph);
-    system_modelling::io::CndModelWriter writer;
-    writer.write("./cnd_models/cndOutput_load_best_config_"+std::to_string(id_best)+".yml", graph);
-    /*
     std::string CNDFilePath = "./cnd_models/motion_planning.yml";
     // TODO A segmentation fault occurs when loading this cnd, also in the test of the cnd Reader. Maybe rebuilding all is enough?
     std::cout << "FOO 1" << std::endl;
     reader.read(CNDFilePath, graph);
     std::cout << "FOO 2" << std::endl;
+
+    
     controller.load_best_config_set(graph);
-    */
 
 }
 
