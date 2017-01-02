@@ -1,5 +1,6 @@
 #include <boost/test/unit_test.hpp>
 #include <performance_map/Model.hpp>
+#include <performance_map/TaskParam.hpp>
 #include <string>
 
 using namespace performance_map;
@@ -35,6 +36,12 @@ BOOST_AUTO_TEST_CASE(store_new_configSet)
     BOOST_CHECK_EQUAL(176, model.getNumConfigSets());
     // The following method does not make much sense, because we don't want to generate the configSets from somewhere else
     // 
+    std::vector<TaskParam> taskParams; 
+    TaskParam taskParam("Example::task","exampleParameterName" );
+    taskParams.push_back(taskParam);
+    TaskParam taskParam2("Example::task2", "example2ParameterName");
+    taskParams.push_back(taskParam2);
+    configSet.setTasksParams(taskParams);
     model.storeConfigSet(configSet);
     BOOST_CHECK_EQUAL(177, model.getNumConfigSets());
     // To generate the config values we would rather use the task infomation

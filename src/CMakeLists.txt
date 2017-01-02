@@ -4,7 +4,7 @@ rock_library(performance_map
     HEADERS Controller.hpp
             Model.hpp
             ConfigSet.hpp
-            TaskConfig.hpp
+            TaskParam.hpp
     DEPS_PKGCONFIG
             base-lib
             system_modelling

@@ -3,6 +3,7 @@
 
 #include <vector>
 #include <string>
+#include "TaskParam.hpp"
 
 namespace performance_map
 {
@@ -13,10 +14,16 @@ namespace performance_map
             
             int get_id(){return id;};
             std::vector<std::string> get_paths(){return paths;}
+            void setTasksParams(std::vector<TaskParam> tasksParams)
+            {
+                this->mTasksParams = tasksParams;
+            }
+            std::vector<TaskParam> getTasksParams(){return mTasksParams;}
             double getPerformance(){return performance;}
 
             int id;
             std::vector<std::string> paths;
+            std::vector<TaskParam> mTasksParams;
             double performance;
 
 
