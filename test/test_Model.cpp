@@ -5,7 +5,6 @@
 
 using namespace performance_map;
 
-
 BOOST_AUTO_TEST_CASE(get_max_performance)
 {
     performance_map::Model model("./maps_tests");
@@ -16,7 +15,7 @@ BOOST_AUTO_TEST_CASE(get_max_performance)
 BOOST_AUTO_TEST_CASE(get_config_paths)
 {
     performance_map::Model model("./maps_tests");
-    model.get_config_paths(1);
+    model.getConfigPaths(1);
 }
 
 BOOST_AUTO_TEST_CASE(get_best_config)

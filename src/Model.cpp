@@ -2,15 +2,44 @@
 #include <base-logging/Logging.hpp>
 
 #include "Model.hpp"
-// Would be much nicer to do it the system_modelling way and not use the config maps
 
 #include <yaml-cpp/yaml.h>
 #include <fstream>
 
 #include <boost/filesystem.hpp>
+#include <boost/range/iterator_range.hpp>
 
 using namespace std;
 using namespace performance_map;
+
+Model::Model(const std::string & path)
+{ 
+    this->mPath = path;
+    reshapeAllConfigFiles();
+    // TODO Count ConfigSets using the correct config files
+};
+
+std::vector<std::string> Model::getTasksNames()
+{
+    return { TASK_NAME_TF, TASK_NAME_MPL, TASK_NAME_TVT};
+}
+
+
+void Model::reshapeAllConfigFiles()
+{
+    boost::filesystem::path path(mPath + SAMPLES_PATH);
+    int counter = 0;
+    boost::filesystem::directory_iterator begin(path), end;
+    for (auto i=begin; i!=end; i++)
+    {
+        boost::filesystem::path fe = i->path().extension();
+        if (fe.string() == ".yml")
+        {
+            reshape_config_file(counter);
+            counter++;
+        }
+    }
+}
 
 YAML::Node Model::get_max_performance_and_id(){
     double max = 0.0;
@@ -18,11 +47,11 @@ YAML::Node Model::get_max_performance_and_id(){
     YAML::Node ids_performances;
     try 
     {
-        ids_performances = YAML::LoadFile(path + IDS_PERFORMANCES_FILE);
+        ids_performances = YAML::LoadFile(mPath + IDS_PERFORMANCES_FILE);
     }
     catch (...)
     {
-        LOG_ERROR_S << "Unable to load file: " + path + IDS_PERFORMANCES_FILE;
+        LOG_ERROR_S << "Unable to load file: " + mPath + IDS_PERFORMANCES_FILE;
         throw;
     }
     for (YAML::Node::const_iterator it=ids_performances.begin(); it!=ids_performances.end(); ++it){
@@ -37,9 +66,11 @@ YAML::Node Model::get_max_performance_and_id(){
     return resul;
 }
 
+
+
 void Model::reshape_config_file(int id)
 {
-    YAML::Node all_configs = YAML::LoadFile(path + SAMPLES_PATH + "/" + std::to_string(id) + ".yml" );
+    YAML::Node all_configs = YAML::LoadFile(mPath + SAMPLES_PATH + "/" + std::to_string(id) + ".yml" );
     std::vector<std::string> tasks;
     for (YAML::const_iterator it=all_configs.begin(); it!=all_configs.end(); ++it){
         // find out the name of the tasks
@@ -59,26 +90,45 @@ void Model::reshape_config_file(int id)
                 taskType = "traversability::Simple";
             file_content[TASK_TYPE_LABEL] = taskType;
             file_content[SECTION_LABEL][id] = all_configs[key];
-            std::string filename = path+SAMPLES_PATH+"/"+key+"_"+std::to_string(id)+".yml";
+            // Check that the byTask dir exists and create if not
+            boost::filesystem::path dir(mPath+SAMPLES_BYTASK_PATH);
+            if(!(boost::filesystem::exists(dir)))
+            {
+                std::cout<<"The path " << mPath +SAMPLES_BYTASK_PATH<< " doesn't Exists"<<std::endl;
+                if (boost::filesystem::create_directory(dir))
+                    std::cout << "....Successfully Created !" << std::endl;
+                else
+                    std::cout << "....Cannot be Created !" << std::endl;
+            }
+            std::string filename = mPath+SAMPLES_BYTASK_PATH+"/"+key+"_"+std::to_string(id)+".yml";
             std::ofstream task_file (filename, std::ofstream::out);
             task_file << file_content;
             task_file.close();
+            //std::cout << "---- closed file with name " << filename << std::endl;
         }
     }
 }
 
-std::vector<std::string> Model::get_config_paths(int id)
+std::vector<std::string> Model::getConfigPaths(int id)
 {
-    reshape_config_file(id);
-    YAML::Node all_configs = YAML::LoadFile(path + SAMPLES_PATH + "/" + std::to_string(id) + ".yml" );
+
     std::vector<std::string> result;
+    /*
+    YAML::Node all_configs = YAML::LoadFile(mPath + SAMPLES_PATH + "/" + std::to_string(id) + ".yml" );
     for (YAML::const_iterator it=all_configs.begin(); it!=all_configs.end(); ++it){
         std::string key = it->first.as<std::string>();
         if ((key != ID_LABEL) and (key != OVERPASSED_LABEL))
         {
-            std::string filename = path+SAMPLES_PATH+"/"+key+"_"+std::to_string(id)+".yml";
+            std::string filename = mPath+SAMPLES_BYTASK_PATH+"/"+key+"_"+std::to_string(id)+".yml";
             result.push_back(filename);
         }
+    }
+    */
+    std::vector<std::string> tasksNames = getTasksNames();
+    for (auto it : tasksNames){
+        std::string filename = mPath+SAMPLES_BYTASK_PATH+"/"+it+"_"+std::to_string(id)+".yml";
+        std::cout << "[Model::getConfigPaths] path :"<< filename << std::endl;
+        result.push_back(filename);
     }
     return result;
 }
@@ -95,7 +145,9 @@ ConfigSet Model::get_best_config(){
     YAML::Node id_performance = get_max_performance_and_id();
     int id = id_performance[ID_LABEL].as<int>();
     ConfigSet result(id);
-    result.paths = get_config_paths(id);
+    std::cout <<"[Model::get_best_config] before get_config_paths " << std::endl;
+    result.paths = getConfigPaths(id);
+    std::cout <<"[Model::get_best_config] result.paths[0] " << result.paths[0] << std::endl;
     return result;
 }
 
@@ -106,8 +158,18 @@ double Model::get_max_performance(){
     return best[PERFORMANCE_LABEL].as<double>();
 }
 
+//bool Model::storeConfigSet(std::vector<std::string> configsPaths)
+//{
+//    mNumConfigSets++;
+//
+//
+//
+//}
 void Model::storeConfigSet(const ConfigSet& configSet)
 {
-    
     mNumConfigSets++;
+
+    // It should store the values in the correspondent files and set paths to those, but how are the values given?
+    // I think that the config set should also contain a list of tasks and a list of parameters per task, this is given to the generator which sets this values. Or the generator is configured and the configSet just stores whatever the generator provides
+
 }

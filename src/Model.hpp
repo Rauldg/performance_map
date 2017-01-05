@@ -14,6 +14,12 @@
 #define MAPS_DEFAULT_FOLDER std::string("./maps")
 
 #define SAMPLES_PATH std::string("/all_samples")
+#define SAMPLES_BYTASK_PATH std::string("/all_samples/byTask")
+
+// TODO Think how you want to control who knows which tasks are managed
+#define TASK_NAME_TF std::string("trajectory_follower")
+#define TASK_NAME_MPL std::string("motion_planning_libraries")
+#define TASK_NAME_TVT std::string("traversability")
 
 namespace performance_map
 {
@@ -21,6 +27,7 @@ namespace performance_map
     {
         private:
             YAML::Node get_max_performance_and_id();
+            void reshapeAllConfigFiles();
             // TODO This whole method should disappear by using correct config
             // yml files and not compositions. Also task_name and task should
             // be contained
@@ -29,20 +36,20 @@ namespace performance_map
             int mNumConfigSets;
 
         public:
-            std::string path;
+            std::string mPath;
+
+            std::vector<std::string> getTasksNames();
 
             int getNumConfigSets(){return mNumConfigSets;};
             void setNumConfigSets(int num){mNumConfigSets = num;};
-
             
-            // TODO In the constructor, count the number of configSets
-            Model(const std::string & path=MAPS_DEFAULT_FOLDER){ this->path = path;};
+            Model(const std::string & path=MAPS_DEFAULT_FOLDER);
             // TODO When setting the path, update the number of configSets
-            void set_path(const std::string & path) { this->path = path;};
-            std::string get_path(){return this->path;};
+            void set_path(const std::string & path) { this->mPath = path;};
+            std::string get_path(){return this->mPath;};
             ConfigSet get_best_config();
             double get_max_performance();
-            std::vector<std::string> get_config_paths(int id);
+            std::vector<std::string> getConfigPaths(int id);
             void storeConfigSet(const ConfigSet& configSet);
 
 
