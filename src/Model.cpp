@@ -82,11 +82,11 @@ void Model::reshape_config_file(int id)
             YAML::Node file_content;
             file_content[TASK_NAME_LABEL] = key;
             std::string taskType;
-            if (key == "trajectory_follower")
+            if (key == TASK_NAME_TF)
                 taskType = "trajectory_follower::Task";
-            if (key == "motion_planner")
+            if (key == TASK_NAME_MPL)
                 taskType = "motion_planning_libraries::Task";
-            if (key == "traversability")
+            if (key == TASK_NAME_TVT)
                 taskType = "traversability::Simple";
             file_content[TASK_TYPE_LABEL] = taskType;
             file_content[SECTION_LABEL][id] = all_configs[key];

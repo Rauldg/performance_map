@@ -18,7 +18,7 @@
 
 // TODO Think how you want to control who knows which tasks are managed
 #define TASK_NAME_TF std::string("trajectory_follower")
-#define TASK_NAME_MPL std::string("motion_planning_libraries")
+#define TASK_NAME_MPL std::string("motion_planner")
 #define TASK_NAME_TVT std::string("traversability")
 
 namespace performance_map
