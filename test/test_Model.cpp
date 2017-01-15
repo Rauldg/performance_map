@@ -30,7 +30,7 @@ BOOST_AUTO_TEST_CASE(get_best_config)
 BOOST_AUTO_TEST_CASE(store_new_configSet)
 {
     performance_map::Model model("./maps_tests");
-    model.setNumConfigSets(176);
+    //model.setNumConfigSets(176);
     performance_map::ConfigSet configSet(model.getNumConfigSets());
     BOOST_CHECK_EQUAL(176, model.getNumConfigSets());
     // The following method does not make much sense, because we don't want to generate the configSets from somewhere else

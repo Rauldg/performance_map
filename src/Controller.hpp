@@ -12,16 +12,10 @@ namespace performance_map
         public:
 
             Controller(const std::string & path):mLibrary(path){};
-            //void set_path(const std::string & path) 
-            //{ 
-            //    this->path = path; 
-            //    mLibrary.set_path(path); 
-            //};
             ConfigSet get_best_config();
             int load_best_config_set(graph_analysis::BaseGraph::Ptr graph);
 
         private:
-            //std::string path;
             Model mLibrary;
     };
 
