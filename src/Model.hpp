@@ -20,6 +20,7 @@
 #define TASK_NAME_TF std::string("trajectory_follower")
 #define TASK_NAME_MPL std::string("motion_planner")
 #define TASK_NAME_TVT std::string("traversability")
+#define NUM_TASKS 3
 
 namespace performance_map
 {
@@ -41,7 +42,7 @@ namespace performance_map
             std::vector<std::string> getTasksNames();
 
             int getNumConfigSets(){return mNumConfigSets;};
-            void setNumConfigSets(int num){mNumConfigSets = num;};
+            int countConfigSets();
             
             Model(const std::string & path=MAPS_DEFAULT_FOLDER);
             // TODO When setting the path, update the number of configSets

@@ -8,16 +8,28 @@
 
 #include <boost/filesystem.hpp>
 #include <boost/range/iterator_range.hpp>
+#include <boost/lambda/bind.hpp>
 
 using namespace std;
 using namespace performance_map;
+using namespace boost::filesystem;
+using namespace boost::lambda;
 
 Model::Model(const std::string & path)
 { 
     this->mPath = path;
     reshapeAllConfigFiles();
+    mNumConfigSets = countConfigSets();
     // TODO Count ConfigSets using the correct config files
 };
+
+int Model::countConfigSets()
+{
+    path thePath = mPath + SAMPLES_BYTASK_PATH;
+    int numConfigs =  std::count_if(directory_iterator(thePath), directory_iterator(), static_cast<bool(*)(const path&)>(is_regular_file));
+    return numConfigs / NUM_TASKS;
+
+}
 
 std::vector<std::string> Model::getTasksNames()
 {
