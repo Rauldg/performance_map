@@ -8,7 +8,7 @@ using namespace performance_map;
 BOOST_AUTO_TEST_CASE(get_max_performance)
 {
     performance_map::Model model("./maps_tests");
-    double max_performance = model.get_max_performance();
+    double max_performance = model.getMaxPerformance();
     BOOST_CHECK_CLOSE( 0.676147, max_performance, 0.03);
 }
 
@@ -21,7 +21,7 @@ BOOST_AUTO_TEST_CASE(get_config_paths)
 BOOST_AUTO_TEST_CASE(get_best_config)
 {
     performance_map::Model model("./maps_tests");
-    performance_map::ConfigSet best = model.get_best_config();
+    performance_map::ConfigSet best = model.getBestConfig();
     BOOST_CHECK_EQUAL(best.get_id(), 141);
     BOOST_CHECK_EQUAL(best.paths.size(), 3);
 }

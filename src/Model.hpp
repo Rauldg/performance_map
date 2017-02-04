@@ -3,6 +3,7 @@
 
 #include "ConfigSet.hpp"
 #include <yaml-cpp/yaml.h>
+#include <boost/filesystem.hpp>
 
 #define PERFORMANCE_LABEL std::string("performance")
 #define ID_LABEL std::string("id")
@@ -27,17 +28,20 @@ namespace performance_map
     class Model
     {
         private:
-            YAML::Node get_max_performance_and_id();
+            YAML::Node getMaxPerformanceAndId();
             void reshapeAllConfigFiles();
             // TODO This whole method should disappear by using correct config
             // yml files and not compositions. Also task_name and task should
             // be contained
-            void reshape_config_file(int id);
+            void reshapeConfigFile(int id);
 
             int mNumConfigSets;
 
         public:
-            std::string mPath;
+            boost::filesystem::path mPath;
+            boost::filesystem::path mPathByTask;
+            boost::filesystem::path mPathIdsPerformance;
+
 
             std::vector<std::string> getTasksNames();
 
@@ -45,11 +49,13 @@ namespace performance_map
             int countConfigSets();
             
             Model(const std::string & path=MAPS_DEFAULT_FOLDER);
+            void init(const std::string & path);
             // TODO When setting the path, update the number of configSets
             void set_path(const std::string & path) { this->mPath = path;};
-            std::string get_path(){return this->mPath;};
-            ConfigSet get_best_config();
-            double get_max_performance();
+
+            //std::string get_path(){return this->mPath;};
+            ConfigSet getBestConfig();
+            double getMaxPerformance();
             std::vector<std::string> getConfigPaths(int id);
             void storeConfigSet(const ConfigSet& configSet);
 

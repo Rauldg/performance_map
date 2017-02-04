@@ -11,8 +11,9 @@ namespace performance_map
     {
         public:
 
-            Controller(const std::string & path):mLibrary(path){};
-            ConfigSet get_best_config();
+            Controller(const std::string & path=MAPS_DEFAULT_FOLDER):mLibrary(path){};
+            ConfigSet getBestConfig();
+            void init(const std::string & path);
             int load_best_config_set(graph_analysis::BaseGraph::Ptr graph);
 
         private:

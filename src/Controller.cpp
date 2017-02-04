@@ -5,9 +5,14 @@
 using namespace std;
 using namespace performance_map;
 
-ConfigSet Controller::get_best_config()
+ConfigSet Controller::getBestConfig()
 {
-    return this->mLibrary.get_best_config();
+    return this->mLibrary.getBestConfig();
+}
+
+void Controller::init(const std::string & path)
+{
+    mLibrary.init(path);
 }
 
 int Controller::load_best_config_set(graph_analysis::BaseGraph::Ptr graph)
@@ -15,7 +20,7 @@ int Controller::load_best_config_set(graph_analysis::BaseGraph::Ptr graph)
     //std::cout << "[Controller::load_best_config_set] Model Path: "<<  mLibrary.get_path() << std::endl;
     system_modelling::io::ConfigReader configReader;
     //std::cout << "[Controller::load_best_config_set] Before get_best_config: " << std::endl;
-    ConfigSet bestConfig = mLibrary.get_best_config();
+    ConfigSet bestConfig = mLibrary.getBestConfig();
     //std::cout << "[Controller::load_best_config_set] Best Config Path[0]: "<<  bestConfig.paths[0] << std::endl;
     std::vector<std::string> paths = bestConfig.get_paths(); 
     int id_best = bestConfig.get_id();
